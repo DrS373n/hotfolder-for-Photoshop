@@ -21,3 +21,9 @@ Now when ever you transfer a file in the "hotfolder" on your desktop, photoshop 
 After it has finished the action it will move the file to the "_processed" folder inside the hotfolder.
 
 *Note: I am just a photographer who had left developing and coding 8 years ago and completely out of loop. I used Cursor AI to code this plug in just as a side project. 
+
+Some Screenshots for reference.
+
+
+<img width="754" height="249" alt="Screenshot 2025-12-31 162733" src="https://github.com/user-attachments/assets/a380f4ee-cf6d-41a8-819d-6ec3f3135403" />
+
