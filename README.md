@@ -27,3 +27,6 @@ Some Screenshots for reference.
 
 <img width="754" height="249" alt="Screenshot 2025-12-31 162733" src="https://github.com/user-attachments/assets/a380f4ee-cf6d-41a8-819d-6ec3f3135403" />
 
+<img width="325" height="519" alt="image" src="https://github.com/user-attachments/assets/b375b490-457f-442c-9f46-f7e1db45fcc5" />
+
+
