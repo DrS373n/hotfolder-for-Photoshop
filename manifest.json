@@ -1,6 +1,6 @@
 {
   "id": "com.swapnil.hotfolder",
-  "name": "Hotfolder Auto-Open (Auto-Assume)",
+  "name": "Hotfolder",
   "version": "1.3.0",
   "main": "index.html",
   "host": {
@@ -12,7 +12,7 @@
     {
       "type": "panel",
       "id": "hotfolder-panel",
-      "label": "Hotfolder Auto-Open",
+      "label": "Hotfolder",
       "main": "index.html",
       "minimumSize": {
         "width": 280,
