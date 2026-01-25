@@ -526,8 +526,7 @@ async function changeHotfolder() {
     }
 
     // Stop monitoring if it's currently active
-    const wasMonitoring = monitorTimer !== null;
-    if (wasMonitoring) {
+    if (monitorTimer !== null) {
       stopMonitoring();
       addLog("Stopped monitoring before changing folder");
     }
