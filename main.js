@@ -516,6 +516,55 @@ function stopMonitoring() {
   addLog("Monitoring stopped, queue cleared");
 }
 
+async function changeHotfolder() {
+  try {
+    // Prompt user to select a new folder
+    const newFolder = await fs.getFolder();
+    if (!newFolder) {
+      addLog("No folder selected. Hotfolder unchanged.");
+      return;
+    }
+
+    // Stop monitoring if it's currently active
+    if (monitorTimer !== null) {
+      stopMonitoring();
+      addLog("Stopped monitoring before changing folder");
+    }
+
+    // Update the hotfolder
+    hotfolder = newFolder;
+    
+    // Clear the processed folder cache
+    processedFolderCache = null;
+    
+    // Clear known names to restart fresh
+    knownNames = new Set();
+    
+    // Save the new token
+    await saveToken(hotfolder);
+    
+    // Update UI
+    const pathSpan = document.getElementById("selectedPath");
+    const nativePath = hotfolder.nativePath || "(hotfolder)";
+    if (pathSpan) {
+      pathSpan.textContent = nativePath;
+    }
+    
+    addLog(`Hotfolder changed to: ${nativePath}`);
+    setStatus("Hotfolder updated successfully");
+    
+    // Re-enable start button if it was disabled
+    const startBtn = document.getElementById("startMonitorBtn");
+    if (startBtn) {
+      startBtn.disabled = false;
+    }
+    
+  } catch (e) {
+    addLog("Failed to change hotfolder: " + e.message);
+    setStatus("Failed to change hotfolder. See log.");
+  }
+}
+
 function initializePanel() {
   Promise.resolve().then(async () => {
     const startBtn = document.getElementById("startMonitorBtn");
@@ -525,6 +574,7 @@ function initializePanel() {
     const actionSelect = document.getElementById("actionSelect");
     const autoRunCheckbox = document.getElementById("autoRunAction");
     const refreshActionsBtn = document.getElementById("refreshActionsBtn");
+    const changeFolderBtn = document.getElementById("changeFolderBtn");
 
     const settings = await loadSettings();
     if (autoRunCheckbox) autoRunCheckbox.checked = !!settings.autoRunAction;
@@ -552,6 +602,7 @@ function initializePanel() {
       pathSpan.textContent = nativePath;
       setStatus("Hotfolder ready");
       startBtn.disabled = false;
+      if (changeFolderBtn) changeFolderBtn.disabled = false;
     } else {
       setStatus("Hotfolder not set.");
     }
@@ -565,6 +616,9 @@ function initializePanel() {
       setStatus("Stop Monitoring");
       stopMonitoring();
     });
+    if (changeFolderBtn) {
+      changeFolderBtn.addEventListener("click", changeHotfolder);
+    }
   });
 }
 
