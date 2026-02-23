@@ -1,12 +1,29 @@
-<select id="hotfolder-selector">
-    <option value="">Select new folder...</option>
-    <option value="folder1">Recent Folder 1</option>
-    <option value="folder2">Recent Folder 2</option>
-    <option value="folder3">Recent Folder 3</option>
-</select>
-
-<!-- Assuming existing button and folder display code is replaced -->
-<div>
-    <label for="hotfolder-selector">Select Hotfolder:</label>
-    <button id="hotfolder-button">Open Hotfolder</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotfolder for Photoshop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hotfolder for Photoshop</h1>
+        <div class="folder-selector">
+            <label for="hotfolder-select">Select a hotfolder:</label>
+            <select id="hotfolder-select">
+                <option value="">-- Select a hotfolder --</option>
+                <option value="folder1">Hotfolder 1</option>
+                <option value="folder2">Hotfolder 2</option>
+                <option value="folder3">Hotfolder 3</option>
+                <option value="new-folder">Choose a new folder...</option>
+            </select>
+        </div>
+        <div class="current-folder-display">
+            <p>Selected Folder: <span id="selected-folder">None</span></p>
+        </div>
+        <button id="submit-button">Submit</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
